@@ -17,7 +17,7 @@ import com.ea.sbrxapi.domain.entity.Flight;
 public class AntarcticaAirplane extends ApiFactory {
 
     @RequestMapping(value = "destinations")
-    public List<Airport> getDestinations() {
+    public List<Airport> getDestinationList() {
         return getAirportsByContinent(Continent.AN);
     }
 }

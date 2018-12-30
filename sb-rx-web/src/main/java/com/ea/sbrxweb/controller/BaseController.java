@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class BaseController
+public abstract class BaseController
 {
     @Autowired
     HttpServletRequest request;

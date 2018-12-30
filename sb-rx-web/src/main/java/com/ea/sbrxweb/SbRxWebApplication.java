@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.ea.sbrxweb.controller.StarterAPI;
 
-@SpringBootApplication(scanBasePackages={"com.ea.sbrxweb"})
+@SpringBootApplication
 @Configuration
 public class SbRxWebApplication extends SpringBootServletInitializer
 {
