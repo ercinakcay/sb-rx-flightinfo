@@ -15,22 +15,22 @@ public class EuropeAirplaneService extends AirplaneService
     private String basePath;
 
     @Override
-    public Observable<AirportDTO> getDestinationList(String from) {
+    public Observable<AirportDTO> getDestinationList() {
         String path = basePath + "/destinations";
 
-        Observable<AirportDTO> result = Observable.fromArray(get(AirportDTO[].class, path, from));
+        Observable<AirportDTO> result = Observable.fromArray(get(AirportDTO[].class, path));
         return result;
     }
 
     @Override
-    public Observable<FlightDTO> getFlightList(String from, String to) {
-        String path = basePath + "/flights/{from}/{to}";
+    public Observable<FlightDTO> getFlightList() {
+        String path = basePath + "/flights";
 
         try {
-            FlightDTO[] resultArray = get(FlightDTO[].class, path, from, from);
+            FlightDTO[] resultArray = get(FlightDTO[].class, path);
             return Observable.fromArray(resultArray);
         } catch (Exception e) {
-            logger.error("Error at getting flight list : {}", e.getStackTrace().toString());
+            logger.error("Error at getting flight list : {}", e.getMessage());
         }
         return Observable.empty();
     }

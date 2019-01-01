@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FlightDTO {
 
-    private String from;
-    private String destination;
+    private AirportDTO from;
+    private AirportDTO destination;
     private String flightDay;
     private String timeOfDeparture;
     private String timeOfArrival;
@@ -17,7 +17,7 @@ public class FlightDTO {
     {
     }
 
-    public FlightDTO(String from, String destination, String flightDay, String timeOfDeparture, String timeOfArrival,
+    public FlightDTO(AirportDTO from, AirportDTO destination, String flightDay, String timeOfDeparture, String timeOfArrival,
                      Integer price, String airline)
     {
         this.from = from;
@@ -29,22 +29,22 @@ public class FlightDTO {
         this.airline = airline;
     }
 
-    public String getFrom()
+    public AirportDTO getFrom()
     {
         return from;
     }
 
-    public void setFrom(String from)
+    public void setFrom(AirportDTO from)
     {
         this.from = from;
     }
 
-    public String getDestination()
+    public AirportDTO getDestination()
     {
         return destination;
     }
 
-    public void setDestination(String destination)
+    public void setDestination(AirportDTO destination)
     {
         this.destination = destination;
     }
@@ -103,8 +103,8 @@ public class FlightDTO {
     public String toString()
     {
         return "FlightDTO{" +
-                "from='" + from + '\'' +
-                ", destination='" + destination + '\'' +
+                "from=" + from +
+                ", destination=" + destination +
                 ", flightDay='" + flightDay + '\'' +
                 ", timeOfDeparture='" + timeOfDeparture + '\'' +
                 ", timeOfArrival='" + timeOfArrival + '\'' +

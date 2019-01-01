@@ -1,4 +1,4 @@
-package com.ea.sbrxweb.service;
+package com.ea.sbrxweb.service.base;
 
 import java.net.URI;
 

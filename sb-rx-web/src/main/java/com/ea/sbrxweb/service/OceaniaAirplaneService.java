@@ -15,13 +15,13 @@ public class OceaniaAirplaneService extends AirplaneService
     private String basePath;
 
     @Override
-    public Observable<AirportDTO> getDestinationList(String from)
+    public Observable<AirportDTO> getDestinationList()
     {
         return null;
     }
 
     @Override
-    public Observable<FlightDTO> getFlightList(String from, String to)
+    public Observable<FlightDTO> getFlightList()
     {
         return null;
     }

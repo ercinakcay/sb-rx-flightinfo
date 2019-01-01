@@ -20,7 +20,7 @@ public class AsiaAirplane extends ApiFactory {
         return getAirportsByContinent(Continent.AS);
     }
 
-    @RequestMapping(value = "/flights/{from}/{to}")
+    @RequestMapping(value = "/flights")
     public List<Flight> getFlightList() {
         return getFlights(Continent.AS);
     }
