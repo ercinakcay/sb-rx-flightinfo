@@ -2,6 +2,7 @@ package com.ea.sbrxweb.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+// TODO: unused
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DestinationDTO {
 

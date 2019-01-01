@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.ea.sbrxweb.dto.DestinationDTO;
+import com.ea.sbrxweb.dto.AirportDTO;
 
 import io.reactivex.Observable;
 
@@ -28,8 +28,24 @@ public class StarterAPI extends BaseController
         StringBuilder sb = new StringBuilder(basePath);
         sb.append("/destinations");
 
-//        Observable<DestinationDTO> result = Observable.fromArray(get(DestinationDTO[].class, sb.toString(), "asd"));
+//        Observable<AirportDTO> result = Observable.fromArray(get(AirportDTO[].class, sb.toString(), "asd"));
 //        model.put("message", "docker is ready to start!" + result.subscribe(System.out::println).toString());
         return "index";
     }
+
+//    @Autowired
+//    private RestTemplate restTemplate;
+//
+//    private URI encodeURI(String url, String... params) {
+//        UriComponents uriComponents = UriComponentsBuilder.fromUriString(url).build().expand(params).encode();
+//        return uriComponents.toUri();
+//    }
+//
+//    public <T> T get(Class<T> clazz, String path) {
+//        return get(clazz, path, "");
+//    }
+//
+//    public <T> T get(Class<T> clazz, String path, String... params) {
+//        return restTemplate.getForObject(encodeURI(path, params), clazz);
+//    }
 }
