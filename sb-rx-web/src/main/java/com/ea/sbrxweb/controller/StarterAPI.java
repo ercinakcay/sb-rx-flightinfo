@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ea.sbrxweb.dto.AirportDTO;
+import com.ea.sbrxweb.dto.FlightDTO;
 import com.ea.sbrxweb.service.AirplaneService;
 
 import io.reactivex.Observable;
@@ -26,7 +26,7 @@ public class StarterAPI extends BaseController
     @RequestMapping("/{from}")
     public String home(Map<String, Object> model, @PathVariable String from)
     {
-        Observable<AirportDTO> result = europeAirplaneService.getDestinationList(from);
+        Observable<FlightDTO> result = europeAirplaneService.getFlightList(from, from);
 
         model.put("message", "docker is ready to start!" + result.subscribe(System.out::println).toString());
         return "index";

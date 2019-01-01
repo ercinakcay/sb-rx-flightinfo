@@ -63,14 +63,16 @@ public abstract class ApiFactory
     @RequestMapping(value = "/flights/{from}/{to}")
     public List<Flight> getFlightList(@PathVariable String from, @PathVariable String to) {
 
-        logger.info("{} - flights will be arranged. From : {} and to : {}", this.getClass().getSimpleName(), from, to);
+        String clazzName = this.getClass().getSimpleName().split("\\$\\$")[0];
+        logger.info("{} - flights will be arranged. From : {} and to : {}", clazzName, from, to);
 
         return IntStream.rangeClosed(0, 3).boxed()
                 .map(x -> new Flight(from, to,
                         DateUtils.getNowDate(),
                         DateUtils.generateRandomLocalTime(true),
                         DateUtils.generateRandomLocalTime(false),
-                        (int) (Math.random() * 1000))
+                        (int) (Math.random() * 1000),
+                        clazzName)
                 ).collect(Collectors.toList());
     }
 }
