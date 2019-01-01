@@ -12,16 +12,16 @@ public class AbstractRestService
     @Autowired
     private RestTemplate restTemplate;
 
-    private URI encodeURI(String url, String... params) {
+    protected URI encodeURI(String url, String... params) {
         UriComponents uriComponents = UriComponentsBuilder.fromUriString(url).build().expand(params).encode();
         return uriComponents.toUri();
     }
 
-    public <T> T get(Class<T> clazz, String path) {
+    protected <T> T get(Class<T> clazz, String path) {
         return get(clazz, path, "");
     }
 
-    public <T> T get(Class<T> clazz, String path, String... params) {
+    protected <T> T get(Class<T> clazz, String path, String... params) {
         return restTemplate.getForObject(encodeURI(path, params), clazz);
     }
 }

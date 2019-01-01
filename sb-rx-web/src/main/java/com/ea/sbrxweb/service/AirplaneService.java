@@ -5,7 +5,7 @@ import com.ea.sbrxweb.dto.FlightDTO;
 
 import io.reactivex.Observable;
 
-public abstract class BaseService extends AbstractRestService
+public abstract class AirplaneService extends AbstractRestService
 {
     public abstract Observable<AirportDTO> getDestinationList(String from);
 

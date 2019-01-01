@@ -2,9 +2,16 @@ package com.ea.sbrxweb.controller;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ea.sbrxweb.dto.AirportDTO;
+import com.ea.sbrxweb.service.AirplaneService;
+
+import io.reactivex.Observable;
 
 @Controller
 @RequestMapping("/")
@@ -13,30 +20,16 @@ public class StarterAPI extends BaseController
     @Value("${eu.api.address}")
     private String basePath;
 
-    @RequestMapping("/")
-    public String home(Map<String, Object> model)
-    {
-        StringBuilder sb = new StringBuilder(basePath);
-        sb.append("/destinations");
+    @Autowired
+    private AirplaneService europeAirplaneService;
 
-//        Observable<AirportDTO> result = Observable.fromArray(get(AirportDTO[].class, sb.toString(), "asd"));
-//        model.put("message", "docker is ready to start!" + result.subscribe(System.out::println).toString());
+    @RequestMapping("/{from}")
+    public String home(Map<String, Object> model, @PathVariable String from)
+    {
+        Observable<AirportDTO> result = europeAirplaneService.getDestinationList(from);
+
+        model.put("message", "docker is ready to start!" + result.subscribe(System.out::println).toString());
         return "index";
     }
 
-//    @Autowired
-//    private RestTemplate restTemplate;
-//
-//    private URI encodeURI(String url, String... params) {
-//        UriComponents uriComponents = UriComponentsBuilder.fromUriString(url).build().expand(params).encode();
-//        return uriComponents.toUri();
-//    }
-//
-//    public <T> T get(Class<T> clazz, String path) {
-//        return get(clazz, path, "");
-//    }
-//
-//    public <T> T get(Class<T> clazz, String path, String... params) {
-//        return restTemplate.getForObject(encodeURI(path, params), clazz);
-//    }
 }

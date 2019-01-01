@@ -9,7 +9,7 @@ import com.ea.sbrxweb.dto.FlightDTO;
 import io.reactivex.Observable;
 
 @Service
-public class NorthAmericaAirplaneService extends BaseService
+public class NorthAmericaAirplaneService extends AirplaneService
 {
     @Value("${na.api.address}")
     private String basePath;
