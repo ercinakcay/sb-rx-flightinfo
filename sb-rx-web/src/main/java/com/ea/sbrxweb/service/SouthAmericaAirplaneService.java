@@ -3,7 +3,7 @@ package com.ea.sbrxweb.service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.ea.sbrxweb.dto.DestinationDTO;
+import com.ea.sbrxweb.dto.AirportDTO;
 import com.ea.sbrxweb.dto.FlightDTO;
 
 import io.reactivex.Observable;
@@ -15,7 +15,7 @@ public class SouthAmericaAirplaneService extends BaseService
     private String basePath;
 
     @Override
-    public Observable<DestinationDTO> getDestinationList(String from)
+    public Observable<AirportDTO> getDestinationList(String from)
     {
         return null;
     }
