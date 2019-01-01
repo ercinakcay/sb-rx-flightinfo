@@ -15,14 +15,23 @@ public class NorthAmericaAirplaneService extends AirplaneService
     private String basePath;
 
     @Override
-    public Observable<AirportDTO> getDestinationList()
-    {
-        return null;
+    public Observable<AirportDTO> getDestinationList() {
+        String path = basePath + "/destinations";
+
+        Observable<AirportDTO> result = Observable.fromArray(get(AirportDTO[].class, path));
+        return result;
     }
 
     @Override
-    public Observable<FlightDTO> getFlightList()
-    {
-        return null;
+    public Observable<FlightDTO> getFlightList() {
+        String path = basePath + "/flights";
+
+        try {
+            FlightDTO[] resultArray = get(FlightDTO[].class, path);
+            return Observable.fromArray(resultArray);
+        } catch (Exception e) {
+            logger.error("Error at getting flight list : {}", e.getMessage());
+        }
+        return Observable.empty();
     }
 }
