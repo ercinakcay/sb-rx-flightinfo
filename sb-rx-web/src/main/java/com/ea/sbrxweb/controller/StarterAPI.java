@@ -17,9 +17,6 @@ import io.reactivex.Observable;
 @RequestMapping("/")
 public class StarterAPI extends BaseController
 {
-    @Value("${eu.api.address}")
-    private String basePath;
-
     @Autowired
     private AirplaneService africaAirplaneService;
 
@@ -41,7 +38,7 @@ public class StarterAPI extends BaseController
     @Autowired
     private AirplaneService southAmericaAirplaneService;
 
-    @RequestMapping("/{from}")
+    @RequestMapping("/")
     public String home(Map<String, Object> model, @PathVariable String from)
     {
         Observable<AirportDTO> result = europeAirplaneService.getDestinationList();
