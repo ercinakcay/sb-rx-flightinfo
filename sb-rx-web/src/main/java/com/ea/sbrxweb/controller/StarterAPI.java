@@ -21,7 +21,25 @@ public class StarterAPI extends BaseController
     private String basePath;
 
     @Autowired
+    private AirplaneService africaAirplaneService;
+
+    @Autowired
+    private AirplaneService antarcticaAirplaneService;
+
+    @Autowired
+    private AirplaneService asiaAirplaneService;
+
+    @Autowired
     private AirplaneService europeAirplaneService;
+
+    @Autowired
+    private AirplaneService northAmericaAirplaneService;
+
+    @Autowired
+    private AirplaneService oceaniaAirplaneService;
+
+    @Autowired
+    private AirplaneService southAmericaAirplaneService;
 
     @RequestMapping("/{from}")
     public String home(Map<String, Object> model, @PathVariable String from)
