@@ -6,15 +6,15 @@ public class Flight implements Serializable {
 
     private static final long serialVersionUID = -8719918556106245278L;
 
-    private String from;
-    private String destination;
+    private Airport from;
+    private Airport destination;
     private String flightDay;
     private String timeOfDeparture;
     private String timeOfArrival;
     private Integer price;
     private String airline;
 
-    public Flight(String from, String destination, String flightDay, String timeOfDeparture, String timeOfArrival,
+    public Flight(Airport from, Airport destination, String flightDay, String timeOfDeparture, String timeOfArrival,
                   Integer price, String airline)
     {
         this.from = from;
@@ -26,22 +26,22 @@ public class Flight implements Serializable {
         this.airline = airline;
     }
 
-    public String getFrom()
+    public Airport getFrom()
     {
         return from;
     }
 
-    public void setFrom(String from)
+    public void setFrom(Airport from)
     {
         this.from = from;
     }
 
-    public String getDestination()
+    public Airport getDestination()
     {
         return destination;
     }
 
-    public void setDestination(String destination)
+    public void setDestination(Airport destination)
     {
         this.destination = destination;
     }

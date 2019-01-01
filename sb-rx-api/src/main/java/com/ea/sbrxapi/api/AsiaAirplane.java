@@ -8,14 +8,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ea.sbrxapi.domain.Continent;
 import com.ea.sbrxapi.domain.entity.Airport;
+import com.ea.sbrxapi.domain.entity.Flight;
 
 @SpringBootApplication(scanBasePackages={"com.ea.sbrxapi"})
 @RestController
-@RequestMapping("api/as")
+@RequestMapping("/api/as")
 public class AsiaAirplane extends ApiFactory {
 
-    @RequestMapping(value = "destinations")
+    @RequestMapping(value = "/destinations")
     public List<Airport> getDestinationList() {
         return getAirportsByContinent(Continent.AS);
+    }
+
+    @RequestMapping(value = "/flights/{from}/{to}")
+    public List<Flight> getFlightList() {
+        return getFlights(Continent.AS);
     }
 }

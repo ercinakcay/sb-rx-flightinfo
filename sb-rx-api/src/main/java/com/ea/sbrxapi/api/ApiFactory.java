@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -11,8 +12,6 @@ import java.util.stream.IntStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ea.sbrxapi.domain.Continent;
 import com.ea.sbrxapi.domain.entity.Airport;
@@ -51,23 +50,28 @@ public abstract class ApiFactory
 
     public List<Airport> getAirportsByContinent(Continent continent)
     {
-        logger.info("{} - Airport list loaded for continent : {}.", this.getClass().getSimpleName(), continent);
-        logger.info("Loading list is limited with 10.");
+        int limit = 20;
+        String clazzName = this.getClass().getSimpleName().split("\\$\\$")[0];
+        logger.info("{} - Airport list loaded for continent : {}.", clazzName, continent);
+        logger.info("Loading list is limited with {}.", limit);
 
         return airports.stream()
                 .filter(x -> continent.getName().equals(x.getContinent()))
                 .collect(Collectors.toList())
-                .subList(0, 10);
+                .subList(0, limit);
     }
 
-    @RequestMapping(value = "/flights/{from}/{to}")
-    public List<Flight> getFlightList(@PathVariable String from, @PathVariable String to) {
-
+    public List<Flight> getFlights(Continent continent)
+    {
         String clazzName = this.getClass().getSimpleName().split("\\$\\$")[0];
-        logger.info("{} - flights will be arranged. From : {} and to : {}", clazzName, from, to);
+        logger.info("{} - flights will be arranged.");
 
+        List<Airport> airportList = getAirportsByContinent(continent);
+
+        Collections.shuffle(airportList);
         return IntStream.rangeClosed(0, 3).boxed()
-                .map(x -> new Flight(from, to,
+                .map(x -> new Flight(airportList.get(x),
+                        airportList.get(x + 1),
                         DateUtils.getNowDate(),
                         DateUtils.generateRandomLocalTime(true),
                         DateUtils.generateRandomLocalTime(false),
