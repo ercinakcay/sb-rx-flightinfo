@@ -17,8 +17,12 @@ public class AsiaAirplaneService extends AirplaneService
     @Override
     public Observable<AirportDTO> getArrivalPoint(String searchFrom) {
         String path = basePath + "/arrival/{searchFrom}";
-
-        Observable<AirportDTO> result = Observable.fromArray(get(AirportDTO.class, path, searchFrom));
+        Observable<AirportDTO> result = Observable.empty();
+        try {
+            result = Observable.fromArray(get(AirportDTO.class, path, searchFrom));
+        } catch (Exception e) {
+            logger.error("Error at getting arrival point list : {}", e.getMessage());
+        }
         return result;
     }
 
