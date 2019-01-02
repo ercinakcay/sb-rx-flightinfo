@@ -64,7 +64,7 @@ public abstract class ApiFactory
     public List<Flight> getFlights(Continent continent)
     {
         String clazzName = this.getClass().getSimpleName().split("\\$\\$")[0];
-        logger.info("{} - flights will be arranged.");
+        logger.info("{} - flights will be arranged.", clazzName);
 
         List<Airport> airportList = getAirportsByContinent(continent);
 
