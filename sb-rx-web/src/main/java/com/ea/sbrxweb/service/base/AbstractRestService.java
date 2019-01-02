@@ -24,4 +24,13 @@ public class AbstractRestService
     protected <T> T get(Class<T> clazz, String path, String... params) {
         return restTemplate.getForObject(encodeURI(path, params), clazz);
     }
+
+    protected <T> T post(Class<T> clazz, String path,  Object object) {
+        return restTemplate.postForObject(encodeURI(path, ""), object, clazz);
+    }
+
+    protected <T> T post(Class<T> clazz, String path,  Object object, String... params) {
+        return restTemplate.postForObject(encodeURI(path, params), object, clazz);
+    }
+
 }

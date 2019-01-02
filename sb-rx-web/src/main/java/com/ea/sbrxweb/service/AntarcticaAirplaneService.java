@@ -15,19 +15,19 @@ public class AntarcticaAirplaneService extends AirplaneService
     private String basePath;
 
     @Override
-    public Observable<AirportDTO> getDestinationList() {
-        String path = basePath + "/destinations";
+    public Observable<AirportDTO> getArrivalPoint(String searchFrom) {
+        String path = basePath + "/arrival/{searchFrom}";
 
-        Observable<AirportDTO> result = Observable.fromArray(get(AirportDTO[].class, path));
+        Observable<AirportDTO> result = Observable.fromArray(get(AirportDTO.class, path, searchFrom));
         return result;
     }
 
     @Override
-    public Observable<FlightDTO> getFlightList() {
+    public Observable<FlightDTO> getFlightList(AirportDTO airport) {
         String path = basePath + "/flights";
 
         try {
-            FlightDTO[] resultArray = get(FlightDTO[].class, path);
+            FlightDTO[] resultArray = post(FlightDTO[].class, path, airport);
             return Observable.fromArray(resultArray);
         } catch (Exception e) {
             logger.error("Error at getting flight list : {}", e.getMessage());

@@ -55,13 +55,17 @@ public abstract class ApiFactory
         logger.info("{} - Airport list loaded for continent : {}.", clazzName, continent);
         logger.info("Loading list is limited with {}.", limit);
 
-        return airports.stream()
+        return getAllAirports().stream()
                 .filter(x -> continent.getName().equals(x.getContinent()))
                 .collect(Collectors.toList())
                 .subList(0, limit);
     }
 
-    public List<Flight> getFlights(Continent continent)
+    public Airport getArrivalPoint(String from, Continent continent) {
+        return getAirportsByContinent(continent).stream().filter(x -> x.getIata().equals(from)).findAny().get();
+    }
+
+    public List<Flight> getFlights(Continent continent, Airport airport)
     {
         String clazzName = this.getClass().getSimpleName().split("\\$\\$")[0];
         logger.info("{} - flights will be arranged.", clazzName);
@@ -70,8 +74,8 @@ public abstract class ApiFactory
 
         Collections.shuffle(airportList);
         return IntStream.rangeClosed(0, 3).boxed()
-                .map(x -> new Flight(airportList.get(x),
-                        airportList.get(x + 1),
+                .map(x -> new Flight(airport,
+                        airportList.get(x),
                         DateUtils.getNowDate(),
                         DateUtils.generateRandomLocalTime(true),
                         DateUtils.generateRandomLocalTime(false),
@@ -79,5 +83,7 @@ public abstract class ApiFactory
                         clazzName)
                 ).collect(Collectors.toList());
     }
+
+
 }
 

@@ -32,10 +32,11 @@ public class AirlineScanner
     @Autowired
     private AirplaneService southAmericaAirplaneService;
 
-    public Observable<FlightDTO> getAllPossibleFlights() {
-
-        return europeAirplaneService.getDestinationList()
+    public Observable<FlightDTO> getAllPossibleFlights(String searchFrom) {
+        return europeAirplaneService.getArrivalPoint(searchFrom)
                 .subscribeOn(Schedulers.io())
-                .flatMap(dest -> europeAirplaneService.getFlightList());
+                .flatMap(arrival -> europeAirplaneService.getFlightList(arrival))
+                .map(f -> new FlightDTO(f.getFrom(), f.getDestination(), f.getFlightDay(), f.getTimeOfDeparture(),
+                        f.getTimeOfArrival(), f.getPrice(), f.getAirline()));
     }
 }

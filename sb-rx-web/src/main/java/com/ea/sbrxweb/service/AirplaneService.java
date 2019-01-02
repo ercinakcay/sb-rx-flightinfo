@@ -13,7 +13,7 @@ public abstract class AirplaneService extends AbstractRestService
 {
     Logger logger = LoggerFactory.getLogger(AirplaneService.class);
 
-    public abstract Observable<AirportDTO> getDestinationList();
+    public abstract Observable<AirportDTO> getArrivalPoint(String searchFrom);
 
-    public abstract Observable<FlightDTO> getFlightList();
+    public abstract Observable<FlightDTO> getFlightList(AirportDTO searchFrom);
 }

@@ -2,26 +2,30 @@ package com.ea.sbrxweb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+import com.ea.sbrxweb.controller.StarterAPI;
+
 @SpringBootApplication
 @Configuration
-public class SbRxWebApplication
+public class SbRxWebApplication extends SpringBootServletInitializer
 {
     public static void main(String[] args)
     {
         SpringApplication.run(SbRxWebApplication.class, args);
     }
 
-//    @Override
-//    protected SpringApplicationBuilder configure(SpringApplicationBuilder application)
-//    {
-//        return application.sources(StarterAPI.class);
-//    }
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application)
+    {
+        return application.sources(SbRxWebApplication.class);
+    }
 
     @Bean
     public RestTemplate restTemplate() {
