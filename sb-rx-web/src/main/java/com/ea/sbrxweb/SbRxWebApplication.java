@@ -10,17 +10,10 @@ import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-import com.ea.sbrxweb.controller.StarterAPI;
-
-@SpringBootApplication
 @Configuration
+@SpringBootApplication
 public class SbRxWebApplication extends SpringBootServletInitializer
 {
-    public static void main(String[] args)
-    {
-        SpringApplication.run(SbRxWebApplication.class, args);
-    }
-
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application)
     {
@@ -37,6 +30,11 @@ public class SbRxWebApplication extends SpringBootServletInitializer
         factory.setReadTimeout(30000);
         factory.setConnectTimeout(30000);
         return factory;
+    }
+
+    public static void main(String[] args)
+    {
+        SpringApplication.run(SbRxWebApplication.class, args);
     }
 }
 

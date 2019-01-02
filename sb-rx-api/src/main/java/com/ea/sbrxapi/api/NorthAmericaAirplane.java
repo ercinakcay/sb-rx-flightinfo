@@ -3,7 +3,9 @@ package com.ea.sbrxapi.api;
 import java.util.List;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,8 +29,8 @@ public class NorthAmericaAirplane extends ApiFactory {
         return getArrivalPoint(from, Continent.NA);
     }
 
-    @RequestMapping(value = "/flights", method = RequestMethod.POST)
-    public List<Flight> getFlightList(Airport airport) {
+    @RequestMapping(value = "/flights", method = RequestMethod.POST,  produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Flight> getFlightList(@RequestBody Airport airport) {
         return getFlights(Continent.NA, airport);
     }
 }

@@ -35,7 +35,7 @@ public abstract class ApiFactory
                     .collect(Collectors.toList()));
             airports.removeIf(x -> x.getName() == null || !x.getType().equals("airport"));
 
-            logger.info("Airpot list has been filled.");
+            logger.info("Airport list has been filled.");
         }
         catch (IOException e)
         {
