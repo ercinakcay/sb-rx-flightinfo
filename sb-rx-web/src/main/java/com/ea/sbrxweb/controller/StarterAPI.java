@@ -19,7 +19,7 @@ public class StarterAPI extends BaseController
     @RequestMapping("/")
     public String home(Map<String, Object> model)
     {
-        model.put("message", "docker is ready to start!" + airlineScanner.getAllPossibleFlights().subscribe(System.out::println));
+        model.put("message", "it is ready to start!" + airlineScanner.getAllPossibleFlights().subscribe(System.out::println));
         return "index";
     }
 
