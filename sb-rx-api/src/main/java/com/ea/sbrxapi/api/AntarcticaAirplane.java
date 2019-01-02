@@ -26,7 +26,7 @@ public class AntarcticaAirplane extends ApiFactory {
 
     @RequestMapping(value = "/arrival/{from}")
     public Airport getArrivalPoint(@PathVariable String from) {
-        return getArrivalPoint(from, Continent.AN);
+        return getArrivalPoint(from);
     }
 
     @RequestMapping(value = "/flights", method = RequestMethod.POST,  produces = MediaType.APPLICATION_JSON_VALUE)

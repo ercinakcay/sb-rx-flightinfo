@@ -61,8 +61,8 @@ public abstract class ApiFactory
                 .subList(0, limit);
     }
 
-    public Airport getArrivalPoint(String from, Continent continent) {
-        return getAirportsByContinent(continent).stream().filter(x -> x.getIata().equals(from)).findAny().get();
+    public Airport getArrivalPoint(String from) {
+        return getAllAirports().stream().filter(x -> x.getIata().equals(from)).findAny().get();
     }
 
     public List<Flight> getFlights(Continent continent, Airport airport)
