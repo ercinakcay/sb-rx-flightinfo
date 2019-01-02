@@ -61,7 +61,7 @@ public abstract class ApiFactory
                 .subList(0, limit);
     }
 
-    public Airport getArrivalPoint(String from) {
+    public Airport getArrivalByPoint(String from) {
         return getAllAirports().stream().filter(x -> x.getIata().equals(from)).findAny().get();
     }
 
