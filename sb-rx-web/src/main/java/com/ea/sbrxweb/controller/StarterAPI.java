@@ -24,6 +24,7 @@ public class StarterAPI extends BaseController
 //        return "index";
 //    }
 
+
     @RequestMapping(value = "/{from}", produces = MediaType.APPLICATION_JSON_VALUE)
     public SseEmitter home(@PathVariable String from)
     {

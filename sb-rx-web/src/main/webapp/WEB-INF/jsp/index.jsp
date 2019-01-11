@@ -5,10 +5,10 @@
 
 </head>
 <body>
-    <div class="container">
-        <div class="starter-template">
-            <h2>Message: ${message}</h2>
-        </div>
+<div class="container">
+    <div class="starter-template">
+        <h2>Message: ${message}</h2>
     </div>
+</div>
 </body>
 </html>
