@@ -2,6 +2,7 @@ package com.ea.sbrxapi.api;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,11 +28,12 @@ public abstract class ApiFactory
     private final static List<Airport> airports = new ArrayList<>();
 
     static {
-        File file = new File(ApiFactory.class.getClassLoader().getResource("airport_info.json").getFile());
+        InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("airport_info.json");
+//        File file = new File(ApiFactory.class.getClassLoader().getResource("airport_info.json").getFile());
         ObjectMapper mapper = new ObjectMapper();
         try
         {
-            airports.addAll(Arrays.stream(mapper.readValue(file, Airport[].class))
+            airports.addAll(Arrays.stream(mapper.readValue(is, Airport[].class))
                     .collect(Collectors.toList()));
             airports.removeIf(x -> x.getName() == null || !x.getType().equals("airport"));
 
