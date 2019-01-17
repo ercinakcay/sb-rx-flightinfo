@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public abstract class ApiFactory
 {
-    static Logger logger = LoggerFactory.getLogger(ApiFactory.class);
+    private static Logger logger = LoggerFactory.getLogger(ApiFactory.class);
 
     private final static List<Airport> airports = new ArrayList<>();
 
