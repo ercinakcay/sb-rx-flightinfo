@@ -28,7 +28,6 @@ public abstract class ApiFactory
 
     static {
         InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("airport_info.json");
-//        File file = new File(ApiFactory.class.getClassLoader().getResource("airport_info.json").getFile());
         ObjectMapper mapper = new ObjectMapper();
         try
         {
